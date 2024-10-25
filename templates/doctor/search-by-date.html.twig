@@ -1,0 +1,9 @@
+<h2>Doctors Born Between {{ startDate|date('Y-m-d') }} and {{ endDate|date('Y-m-d') }}</h2>
+
+<ul>
+    {% for doctor in doctors %}
+        <li>{{ doctor.name }} - {{ doctor.dateBorn|date('Y-m-d') }}</li>
+    {% else %}
+        <li>No doctors found in this date range.</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la recherche{% endblock %}
+
+{% block body %}
+    <h1>Résultats de la recherche pour "{{name}}"</h1>
+
+    {% if hospitals is empty %}
+        <p>we have no hospital.</p>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                                    <th>id</th>
+                    <th>name</th>
+                    <th>date of build</th>
+                    <th>nb doctors</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hospital in hospitals %}
+                    <tr>
+                        <td>{{ hospital.id }}</td>
+                        <td>{{ hospital.name }}</td>
+                        <td>{{ hospital.dateBuilding|date('d/m/Y H:i') }}</td>
+                        <td>{{ hospital.getDoctors()|length }}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <a href="{{ path('app_hospital_list') }}" class="btn btn-secondary">Back to list hospitals</a>
+{% endblock %}

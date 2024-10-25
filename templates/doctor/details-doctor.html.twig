@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AuthorController!{% endblock %}
+
+{% block body %}
+<h1>Doctor Details</h1>
+<div>
+{% if doctor is not null %}
+<p><b>name : </b> {{ doctor.name | upper }} </p>
+<p><b>date Of build : </b>{{ doctor.dateBorn|date('d/m/Y H:i') }}</p>
+<p><b>hospital:</b> {{ doctor.hospital.name}}</p>
+{% else %}
+<p>doctor not found.</p>
+{% endif %}
+<a href="{{path('app_doctor_list')}}">Return to List.</a>
+</div>
+{% endblock %}
